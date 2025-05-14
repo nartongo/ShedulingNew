@@ -1,0 +1,137 @@
+<UserControl x:Class="ShedulingNew.UI.Views.RobotStatusView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShedulingNew.UI.Views"
+             xmlns:viewmodels="clr-namespace:ShedulingNew.UI.ViewModels"
+             xmlns:common="clr-namespace:ShedulingNew.UI.Common"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    
+    <UserControl.Resources>
+        <viewmodels:RobotStatusViewModel x:Key="RobotStatusViewModel"/>
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter"/>
+        <common:LessThan20Converter x:Key="LessThan20Converter"/>
+        <common:Between20And40Converter x:Key="Between20And40Converter"/>
+        <common:StatusToColorConverter x:Key="StatusToColorConverter"/>
+        
+        <Style x:Key="StatusTextStyle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        
+        <Style x:Key="StatusHeaderStyle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Background" Value="#F0F0F0"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid DataContext="{StaticResource RobotStatusViewModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- 顶部控制区 -->
+        <Grid Grid.Row="0" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Grid.Column="0" Text="机器人状态监控" FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
+            
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <Button Content="刷新" Width="80" Margin="5" Click="RefreshButton_Click"/>
+                <Button Content="同步状态" Width="80" Margin="5" Click="SyncButton_Click"/>
+            </StackPanel>
+        </Grid>
+        
+        <!-- 主内容区 - 机器人状态列表 -->
+        <DataGrid Grid.Row="1" Margin="5" 
+                  ItemsSource="{Binding RobotStatusItems}" 
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  AlternatingRowBackground="#F9F9F9"
+                  GridLinesVisibility="Horizontal"
+                  HeadersVisibility="Column"
+                  CanUserSortColumns="True"
+                  CanUserResizeColumns="True"
+                  BorderThickness="1"
+                  BorderBrush="#DDDDDD">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="机器人ID" Binding="{Binding RobotId}" Width="100"/>
+                <DataGridTextColumn Header="状态" Binding="{Binding StatusDisplay}" Width="80">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Status}" Value="IDLE">
+                                    <Setter Property="Foreground" Value="Green"/>
+                                    <Setter Property="FontWeight" Value="Normal"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}" Value="WORKING">
+                                    <Setter Property="Foreground" Value="Blue"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}" Value="CHARGING">
+                                    <Setter Property="Foreground" Value="Orange"/>
+                                    <Setter Property="FontWeight" Value="Normal"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}" Value="ERROR">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="电量" Binding="{Binding PowerDisplay}" Width="70">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding PowerLevel, Converter={StaticResource LessThan20Converter}}" Value="True">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding PowerLevel, Converter={StaticResource Between20And40Converter}}" Value="True">
+                                    <Setter Property="Foreground" Value="Orange"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="位置" Binding="{Binding Location}" Width="120"/>
+                <DataGridTextColumn Header="方向" Binding="{Binding DirectionDisplay}" Width="80"/>
+                <DataGridTextColumn Header="速度" Binding="{Binding SpeedDisplay}" Width="80"/>
+                <DataGridTextColumn Header="任务ID" Binding="{Binding TaskId}" Width="150"/>
+                <DataGridTextColumn Header="最后更新时间" Binding="{Binding LastUpdatedDisplay}" Width="150"/>
+                <DataGridTemplateColumn Header="操作" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="详情" Margin="2" Click="ViewDetailButton_Click"/>
+                                <Button Content="历史" Margin="2" Click="ViewHistoryButton_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <!-- 底部状态栏 -->
+        <StatusBar Grid.Row="2">
+            <StatusBarItem>
+                <TextBlock Text="{Binding StatusMessage}"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock Text="{Binding LastUpdateTime, StringFormat='最后更新时间: {0}'}"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</UserControl> 

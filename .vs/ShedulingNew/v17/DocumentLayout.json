@@ -1,0 +1,72 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\sheduling\\ShedulingNew\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0A24DE55-A179-4C21-8A82-1B936DAF950C}|ShedulingNew\\ShedulingNew.csproj|d:\\sheduling\\shedulingnew\\shedulingnew\\businesslogic\\services\\rabbitmqclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A24DE55-A179-4C21-8A82-1B936DAF950C}|ShedulingNew\\ShedulingNew.csproj|solutionrelative:shedulingnew\\businesslogic\\services\\rabbitmqclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A24DE55-A179-4C21-8A82-1B936DAF950C}|ShedulingNew\\ShedulingNew.csproj|d:\\sheduling\\shedulingnew\\shedulingnew\\businesslogic\\services\\agvservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A24DE55-A179-4C21-8A82-1B936DAF950C}|ShedulingNew\\ShedulingNew.csproj|solutionrelative:shedulingnew\\businesslogic\\services\\agvservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A24DE55-A179-4C21-8A82-1B936DAF950C}|ShedulingNew\\ShedulingNew.csproj|d:\\sheduling\\shedulingnew\\shedulingnew\\businesslogic\\services\\backendservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A24DE55-A179-4C21-8A82-1B936DAF950C}|ShedulingNew\\ShedulingNew.csproj|solutionrelative:shedulingnew\\businesslogic\\services\\backendservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BackendService.cs",
+              "DocumentMoniker": "D:\\sheduling\\ShedulingNew\\ShedulingNew\\BusinessLogic\\Services\\BackendService.cs",
+              "RelativeDocumentMoniker": "ShedulingNew\\BusinessLogic\\Services\\BackendService.cs",
+              "ToolTip": "D:\\sheduling\\ShedulingNew\\ShedulingNew\\BusinessLogic\\Services\\BackendService.cs",
+              "RelativeToolTip": "ShedulingNew\\BusinessLogic\\Services\\BackendService.cs",
+              "ViewState": "AQIAAJ8AAAAAAAAAAAAywKMAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T10:58:51.344Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AGVService.cs",
+              "DocumentMoniker": "D:\\sheduling\\ShedulingNew\\ShedulingNew\\BusinessLogic\\Services\\AGVService.cs",
+              "RelativeDocumentMoniker": "ShedulingNew\\BusinessLogic\\Services\\AGVService.cs",
+              "ToolTip": "D:\\sheduling\\ShedulingNew\\ShedulingNew\\BusinessLogic\\Services\\AGVService.cs",
+              "RelativeToolTip": "ShedulingNew\\BusinessLogic\\Services\\AGVService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T11:13:22.823Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RabbitMqClient.cs",
+              "DocumentMoniker": "D:\\sheduling\\ShedulingNew\\ShedulingNew\\BusinessLogic\\Services\\RabbitMqClient.cs",
+              "RelativeDocumentMoniker": "ShedulingNew\\BusinessLogic\\Services\\RabbitMqClient.cs",
+              "ToolTip": "D:\\sheduling\\ShedulingNew\\ShedulingNew\\BusinessLogic\\Services\\RabbitMqClient.cs",
+              "RelativeToolTip": "ShedulingNew\\BusinessLogic\\Services\\RabbitMqClient.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAwwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T11:03:50.357Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
